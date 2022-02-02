@@ -1,0 +1,11 @@
+.tablet {
+    position: relative;
+    width: 468px;
+    height: 300px;
+    margin: auto;
+    border: 16px black solid;
+    border-top-width: 60px;
+    border-bottom-width: 60px;
+    border-radius: 36px;
+  }
+  

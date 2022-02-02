@@ -56,9 +56,15 @@ export class NutritionComponent implements OnInit {
 
   OnGetByName(value:any)
   {
-    this.nutrServ.getNutByName(value.keyword).subscribe((data: any)=>{
-      //console.log("data here="+data);
-      this.currentNutr=data;
+    this.nutrServ.getNutByLikeName(value.keyword).subscribe((data:any)=>{
+     // console.log("url="+this.nutrServ.urls+value.keyword);
+      this.nutriments=data;
+      this.currentNutr=data.slice(0,5);
+      this.totalpages= Math.ceil(data.length/5);
+      this.pages=new Array<number>(this.totalpages);
+      this.OnPageNutrient(0);
+      //this.totalpages=Math.ceil(data.length/5);
+     
       
       //this.currentpage=0;
      //data = JSON.parse(data.toString());

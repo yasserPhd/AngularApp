@@ -106,7 +106,9 @@ body {
 			 <td> {{ a.date_naissance}} </td>
 				<td> {{	a.email }} </td>
 				<td> {{	a.photo }} </td>
+				<td>	<img  src="{{path}}{{a.photo}}" width="50" height="50" > </td> 
 				<td> <a class="btn btn-danger" (click)="onDeleteAthlete(a)"> delete</a> </td>
+				<td> <a class="btn btn-success" (click)="onEditAthlete(a._links.athlete.href)"> edit</a> </td>
 			 <!-- <td> {{c.FoodItem }}</td>
 			 <td> {{c.per100grams}} </td>
 			 <td> {{c.FoodCategory}} </td>

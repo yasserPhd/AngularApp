@@ -6,7 +6,10 @@ import { Observable, ObservableInput } from 'rxjs';
   providedIn: 'root'
 })
 export class NutrServService {
-public url:string="https://retoolapi.dev/AgFTsW/data";
+//public url:string="https://retoolapi.dev/AgFTsW/data";
+public url:string="http://localhost:8080/api/getAllFood";
+public urls:string="http://localhost:8080/api/getNutFact?name=";
+public orgUrl:string="https://retoolapi.dev/AgFTsW/data";
   constructor(private httpClient:HttpClient) { }
   public getNutrition(page:number, size:number){
     return this.httpClient.get(this.url+"?page="+page+"&size="+size) ;
@@ -28,20 +31,25 @@ public url:string="https://retoolapi.dev/AgFTsW/data";
     console.log("this is our food "+food);
     return this.httpClient.get(this.url+"?FoodItem="+rst);
   }
+  public getNutByLikeName(mc:string)
+  {
+    
+    return this.httpClient.get(this.urls+mc);
+  }
   public deleteItem(id:number){
-    return this.httpClient.delete(this.url+"/"+id);
+    return this.httpClient.delete(this.orgUrl+"/"+id);
   }
   public addItem(url:any, food:Food)
   {
-    return this.httpClient.post(this.url,food);
+    return this.httpClient.post(this.orgUrl,food);
   }
   public getItemByid(id:number)
   {
-    return this.httpClient.get(this.url+"/"+id);
+    return this.httpClient.get(this.orgUrl+"/"+id);
   }
   public editItem(id:number, food:Food)
   {
-    return this.httpClient.put(this.url+"/"+id,  food);
+    return this.httpClient.put(this.orgUrl+"/"+id,  food);
   }
   public getNutrByPage(id:number, farray:Food[])
   {

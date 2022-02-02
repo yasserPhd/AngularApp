@@ -11,7 +11,7 @@
                 <label for="FoodItem">FoodItem</label>
              
                 <!-- <input  type="text" [(ngModel)]="food.FoodItem"  name="FoodItem"  class="form-control"> -->
-                <input  type="text" [(ngModel)]="food.FoodItem"  name="FoodItem"  class="form-control">
+                <input  type="text" [(ngModel)]="food.foodItem"  name="foodItem"  class="form-control">
               </div>
                 <!-- <div class="form-group col-md-10">
               <label for="FoodItem">FoodItem</label>
@@ -27,16 +27,16 @@
             
             <tr> <div class="form-group col-md-10">
               <label class="control-label">FoodCategory</label> 
-              <input type="text"  [(ngModel)]="food.FoodCategory" class="form-control" name="FoodCategory" placeholder="FoodCategory">
+              <input type="text"  [(ngModel)]="food.foodCategory" class="form-control" name="foodCategory" placeholder="FoodCategory">
           </div> </tr>
           
           <tr><div class="form-group col-md-10">
               <label class="control-label">KJ_per100grams</label> 
-              <input type="text" class="form-control" name="KJ_per100grams" [(ngModel)]="food.KJ_per100grams">
+              <input type="text" class="form-control" name="kj_per100grams" [(ngModel)]="food.kj_per100grams">
           </div> </tr>
           <tr><div class="form-group col-md-10">
             <label class="control-label">Cals_per100grams</label> 
-            <input type="text" class="form-control" name="Cals_per100grams" [(ngModel)]="food.Cals_per100grams">
+            <input type="text" class="form-control" name="cals_per100grams" [(ngModel)]="food.cals_per100grams">
         </div> </tr>
           <button type="submit" class="btn btn-primary">edit food</button>
       </div>

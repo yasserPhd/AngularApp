@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html >
+
+<head>
+<title>list des paiments</title>
+<meta charset="utf-8"/>
+<style>
+
+div.scrollmenu {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+    background-color: #777;
+}
+body {
+   /* background-image: url("../static/images/bg.jpg"); */
+   background-color: #cccccc;
+}
+</style>
+
+ 
+</head>
+<body >
+ 
+ <!-- <div class="scrollmenu">
+  <a th:href="@{index}">Acceuil</a>
+   <a th:href="@{example}">consulter les clients </a>
+  
+  <a th:href="@{contact}">Contact</a>
+  <a href="#about">aide</a>
+</div>  -->
+
+<!-- <div>
+ <button type="submit">consulter les clients</button>
+ </div>
+ <br></br> -->
+<!-- <div class="container spacer">
+ 	<form th:action="@{searchName}" method="get">
+ 	 <div>
+ 	 	<label>Mot clé :</label>
+ 	 	<input type="text" name="motSrch"/>
+ 	 	<button type="submit">Chercher</button>
+ 	 </div>
+ 	</form>
+ 	
+ 	<br></br>
+ 	
+ 	 <form th:action="@{addEtud}" method="get"> 
+ 	<form th:action="@{index}" method="get">
+ 	 	<label> ajouter client :</label>
+ 	 	 
+ 	 	<form>
+ 	 	<div > id  </div>
+ 		<div> <input type="number" name="id"/>   </div> 
+ 		 <div > Nom  </div>
+ 		<div> <input type="text" name="nom"/>   </div> 
+ 		 <div > Date de naissance </div>
+ 		<div>  <input type="text" name="date"/>   </div>
+ 		  <div >   Email </div>
+ 		  <div >   <input type="text" name="email"/> </div> 
+ 		 <div > Photo </div> 
+ 		<div > <input type="text" name="photo"/>  </div> 
+ 	 
+ 	 <br >	</br>
+	 <button type="submit">add client</button> <br >	</br>
+	  
+ 	  
+ 	 </form>
+ 	</form>
+</div> -->
+<!-- <div class="panel-body">
+    <button class="btn btn-primary"> chercher</button>
+</div> -->
+<button type="button" class="btn btn-outline-primary" (click)="OnGetPaiments()" >voir les paiments</button>
+<div class="panel-body">
+    <form>
+	<!-- <form #f="ngForm" (ngSubmit)="OnGetByName(f.value)" > -->
+		<div class="form-group">
+	<input type="text" class="form-control rounded"  name="keyword" ngModel>
+	<button type="button" class="btn btn-outline-primary" type="submit">
+		<span class="glyphicon glyphicon-search"></span>
+		chercher un client
+	</button>
+       </div>
+   </form>
+</div>
+<div class="panel-body">
+  <table  class="table table-striped">
+  	<thead>
+ 		<tr>
+ 		<th>nom</th> <th>date_debut</th> <th>date_fin</th>  
+		 <th>montant</th> 
+ 		</tr> 
+        
+		 <!-- <tr > 
+			<td> {{c.nom}} </td>
+			<td> {{ c.date_naissance}} </td>
+			   <td> {{	c.email }} </td>
+			   <td> {{	c.photo }} </td>
+            </tr>  -->
+			<!-- <tr *ngFor ="let a of athletes._embedded.athletes">
+			 <td> {{a.nom}} </td>
+			 <td> {{ a.date_naissance}} </td>
+				<td> {{	a.email }} </td>
+				<td> {{	a.photo }} </td>	
+		 <!-- <tr *ngFor ="let c of athletes_embedded.athletes"> -->
+			<!-- <tr *ngFor ="let a of athletes._embedded.athletes">
+			 <td> {{a.nom}} </td>
+			 <td> {{ a.date_naissance}} </td>
+				<td> {{	a.email }} </td>
+				<td> {{	a.photo }} </td>
+				<td> <a class="btn btn-danger" (click)="onDeleteAthlete(a)"> delete</a> </td>
+			 <!-- <td> {{c.FoodItem }}</td>
+			 <td> {{c.per100grams}} </td>
+			 <td> {{c.FoodCategory}} </td>
+			 <td> {{ c.KJ_per100grams }}</td>
+				<td> {{ c.Cals_per100grams}} </td> -->
+		 <!-- </tr> --> 
+  	</thead>
+  	<tbody>
+		<!-- <tr *ngFor ="let n of nutriments; let i=index">  -->
+			<tr *ngFor ="let p of paiements._embedded.paiments ; let i = index" >
+			<td> {{p.nom}} </td>
+            <td> {{p.date_debut}} </td>
+            <td> {{ p.date_fin }} </td>
+            <td> {{ p.montant }} </td>
+			<td> <a class="btn btn-danger" (click)="onDeletePayment(p)"> delete</a> </td>
+			<td> <a class="btn btn-success" (click)="OnEditPayment(p._links.paiment.href)"> edit</a> </td>
+			
+		</tr>
+			<!-- <tr *ngFor ="let n of currentNutr; let i = index" > -->
+			<!-- <div *ngFor = "let j of [i,i+1,i+2,i+3,i+4,i+5]" >  -->
+			<!-- <td> {{nutriments[j].id}} </td> -->
+			<!-- <tr *ngFor ="let n of currentNutr; let i = index" ></tr> -->
+            <!-- <td> {{n.FoodItem}} </td>
+            <td> {{n.per100grams}} </td>
+            <td> {{n.FoodCategory}} </td>
+            <td> {{ n.KJ_per100grams }} </td>
+            <td> {{ n.Cals_per100grams }} </td> -->
+			 
+			<!-- <td> <a class="btn btn-danger" > delete</a> </td>
+			<td> <a class="btn btn-success" > edit</a> </td> -->
+			<!-- <div {{currentpage}}="totalpages/i"> </div>  -->
+           <!-- </tr> -->
+		
+		
+  		<!-- <tr th:each="coach:${pageCoaches.content}">
+  		
+  		<td th:text="${coach.id}"></td> 
+  			<td th:text="${coach.nom}"></td> 
+  			<td th:text="${coach.date_naissance}"></td> 
+  			<td th:text="${coach.email}"></td>
+  		
+  			
+  		  
+				  <td>	<img  th:src="@{'/images/'+${coach.photo}}" width="50" height="50" /> </td>  
+  			<td><a onclick="return confirm('Etes vous sur ?')" th:href="@{suppCoach(id=${coach.id})}">Supprimer</a></td>
+  		
+  			
+  		</tr> -->
+    
+  	</tbody>
+  </table>
+  <ul *ngIf="pages" class="nav nav-pills">
+	<li class="Pointing" [ngClass]="i==currentpage? 'active':'' " *ngFor="let p of pages; let i=index">
+	<a (click)="OnPagePaiment(i)">{{i+1}}</a>
+  </li>
+</ul>
+  <!-- <ul *ngIf="pages" class="nav nav-pills nav-justified " >
+	<li class="Pointing" [ngClass]="i==currentpage? 'active':'' " *ngFor="let p of pages; let i=index">
+	<a (click)="OnPageNutrient(i)">{{i+1}}</a>
+  </li>
+</ul> -->
+  <!-- <ul class="nav nav-pills">
+	  <li class="Pointing" [ngClass]="i==currentpage? 'active':'' " *ngFor="let p of pages; let i=index">
+	  <a (click)="OnPageAthlete(i)">{{i+1}}</a> 
+	 </li> 
+  </ul> -->
+  </div>
+  
+
+</body>
+</html>
+
+

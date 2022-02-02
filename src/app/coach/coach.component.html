@@ -104,8 +104,11 @@ body {
 			<td> {{ c.date_naissance}} </td>
 			   <td> {{	c.email }} </td>
 			   <td> {{	c.photo }} </td>
+			   <td>	<img  src="{{path}}{{c.photo}}" width="50" height="50" > </td> 
+			   <td> <a class="btn btn-danger"(click)="onDeleteCoach(c)" > delete</a> </td>
+			   <td> <a class="btn btn-success" (click)="onEditCoach(c._links.coach.href)"> edit</a> </td>
 			<!-- <tr *ngFor ="let a of athletes._embedded.athletes">
-			 <td> {{a.nom}} </td>
+			 <td> {{a.nom}}  </td>  (click)="onDeleteCoach(a)
 			 <td> {{ a.date_naissance}} </td>
 				<td> {{	a.email }} </td>
 				<td> {{	a.photo }} </td>	
@@ -142,9 +145,9 @@ body {
   	</tbody>
   </table>
   <ul class="nav nav-pills">
-	  <!-- <li class="Pointing" [ngClass]="i==currentpage? 'active':'' " *ngFor="let p of pages; let i=index">
-	  <a (click)="OnPageAthlete(i)">{{i+1}}</a> -->
-	<!-- </li> -->
+	  <li class="Pointing" [ngClass]="i==currentpage? 'active':'' " *ngFor="let p of pages; let i=index">
+	  <a (click)="OnPageCoach(i)">{{i+1}}</a>
+	</li>
   </ul>
   </div>
   

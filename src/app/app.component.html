@@ -4,28 +4,62 @@
       <a class="navbar-brand" href="#">Moufdi's fitnes empire</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a routerLink="/">Home</a></li>
+      <li class="active"><a routerLink="/home">Home</a></li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Nos clients
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a routerLink="/new-client">Ajouter nouveau client</a></li>
           <li><a routerLink ="/clients">Consulter les clients</a></li>
-          <li><a href="#">chercher un client</a></li>
         </ul>
       </li>
-      <li><a routerLink="/coaches">consulter les coach</a></li>
-      
-      <li><a routerLink="/aliments"> consulter les aliments</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Nos coaches
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/new-coach">Ajouter coach</a></li>
+          <li><a routerLink ="/coaches">Consulter les coaches</a></li>
+        </ul>
+      </li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Nos aliments
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a routerLink="/new-aliment">Ajouter aliment</a></li>
-          <li><a routerLink ="/clients">Consulter aliments</a></li>
+          <li><a routerLink ="/aliments">Consulter aliments</a></li>
           
         </ul>
       </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Paiements
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/new-payment">Ajouter un paiement</a></li>
+          <li><a routerLink ="/paiments">Consulter les paiements</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Benifice
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/benifice">consulter le benifice</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Utilisateurs
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/users"><span class="glyphicon glyphicon-user"></span>users</a></li>
+          <li><a routerLink="/new-user"><span class="glyphicon glyphicon-user"></span>new user</a></li>
+        </ul>
+      </li>
+      
+      
+      
+        <li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" ><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          
+     
     </ul>
   </div>
 </nav>

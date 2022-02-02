@@ -13,9 +13,18 @@ export class EditNutritionComponent implements OnInit {
   constructor(private nutService:NutrServService,private route:Router, private actRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    //console.log(this.actRoute);
     let id=this.actRoute.snapshot.params['id'];
+   
     this.nutService.getItemByid(id).subscribe((data:any)=>{
-       this.food=data;
+      console.log("item"+data.FoodItem);
+       this.food.id=data.id;
+       this.food.cals_per100grams=data.Cals_per100grams;
+       this.food.foodCategory=data.FoodCategory;
+       this.food.foodItem=data.FoodItem;
+       this.food.kj_per100grams=data.KJ_per100grams;
+       this.food.per100grams=data.per100grams;
+       //console.log(this);
     },err=>{
       console.log(err);
 
@@ -28,8 +37,9 @@ export class EditNutritionComponent implements OnInit {
         this.nutService.editItem(id, f).subscribe((data:any)=>{
           //this.foods=data;
           //console.log("object added="+food);
-          this.food=data;
-          this.route.navigateByUrl("/aliments");
+         
+        this.food=data;
+        this.route.navigateByUrl("/aliments");
         },err=> 
         {console.log(err);}
         );

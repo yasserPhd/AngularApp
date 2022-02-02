@@ -1,0 +1,22 @@
+<div class="col-md-6">
+    <h2 class="text-center">Add user</h2>
+    <form #f="ngForm" (ngSubmit)="createUser()">
+      <div class="form-group">
+        <label for="name">user name:</label>
+        <input type="name" [(ngModel)]="user.userName" placeholder="userName" name="userName" class="form-control" id="name">
+      </div>
+    
+      <div class="form-group">
+        <label for="designation">Password:</label>
+        <input type="password" [(ngModel)]="user.password" placeholder="password" name="password" class="form-control" id="password">
+      </div>
+      <div class="form-group">
+        <label for="Role">Role:</label>
+        <select  name ="user.roles"  (Change)="getSelectedOption()"  [(ngModel)]="user.roles"   >
+            <option  *ngFor="let o of options" [ngValue]="o"> {{o}} </option>
+            </select>
+      </div>
+      <p>Selected option: {{ user.roles }}</p>
+      <button class="btn btn-success">Create</button>
+    </form>
+    </div>

@@ -7,7 +7,7 @@
          
           <tr>  <div class="form-group col-md-10">
           <label for="FoodItem">FoodItem</label>
-          <input type="text" class="form-control" name="FoodItem" placeholder="FoodItem" ngModel>
+          <input type="text" class="form-control" name="foodItem" placeholder="FoodItem" ngModel>
         </div>
         </tr>
         <tr> <div class="form-group col-md-10">
@@ -17,16 +17,16 @@
         
         <tr> <div class="form-group col-md-10">
           <label class="control-label">FoodCategory</label> 
-          <input type="text" class="form-control" name="FoodCategory" placeholder="FoodCategory" ngModel>
+          <input type="text" class="form-control" name="foodCategory" placeholder="FoodCategory" ngModel>
       </div> </tr>
       
       <tr><div class="form-group col-md-10">
           <label class="control-label">KJ_per100grams</label> 
-          <input type="text" class="form-control" name="KJ_per100grams" placeholder="KJ_per100grams" ngModel>
+          <input type="text" class="form-control" name="kj_per100grams" placeholder="KJ_per100grams" ngModel>
       </div> </tr>
       <tr><div class="form-group col-md-10">
         <label class="control-label">Cals_per100grams</label> 
-        <input type="text" class="form-control" name="Cals_per100grams" placeholder="Cals_per100grams" ngModel>
+        <input type="text" class="form-control" name="cals_per100grams" placeholder="Cals_per100grams" ngModel>
     </div> </tr>
       <button type="submit" class="btn btn-primary">add food</button>
   </div>
@@ -39,7 +39,7 @@
        <div style="text-align:center"> <h1>Food added successfully </h1> </div>
       <div class="form-group">
         <label>FoodItem:</label>
-         <label>{{currFood.FoodItem}}</label> 
+         <label>{{currFood.foodItem}}</label> 
       </div>
       <div class="form-group">
         <label>per100grams: </label>
@@ -47,15 +47,15 @@
       </div>
       <div class="form-group">
         <label>FoodCategory:</label>
-         <label>{{currFood.FoodCategory}}</label> 
+         <label>{{currFood.foodCategory}}</label> 
       </div>
       <div class="form-group">
         <label>KJ_per100grams:</label>
-         <label>{{ currFood.KJ_per100grams }}</label> 
+         <label>{{ currFood.kj_per100grams }}</label> 
       </div>
       <div class="form-group">
         <label>Cals_per100grams:</label>
-         <label>{{currFood.Cals_per100grams}}</label> 
+         <label>{{currFood.cals_per100grams}}</label> 
       </div>
 
     </div>

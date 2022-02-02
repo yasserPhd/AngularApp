@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Coach } from '../Coach.model/Coach';
 import { CoachServService } from '../service/coach-serv.service';
 
 @Component({
@@ -12,9 +14,11 @@ export class CoachComponent implements OnInit {
   public currentpage:number=0;
   public totalpages:number=0;
   public pages:Array<number>=[];
-  constructor(private coachServ:CoachServService) { }
+  public path="/assets/images/";
+  constructor(private coachServ:CoachServService, private router:Router) { }
 
   ngOnInit(): void {
+    this.OnGetCoach();
   }
 
   OnGetCoach()
@@ -49,6 +53,35 @@ export class CoachComponent implements OnInit {
      },err=> 
      {console.log(err);}
      );
+  }
+  public OnPageCoach(i:number)
+  {
+   this.currentpage=i;
+   this.OnGetCoach();
+
+  }
+  public onDeleteCoach(c:any)
+  {
+    let conf=confirm("Are you sure to delete this athlete?")
+    if (conf)
+    {
+     let url=c._links.self.href;
+     //console.log("this is url "+c._links.self.href);
+    this.coachServ.deleteCoach(url).
+    subscribe(data=>{
+      this.OnGetCoach();
+      console.log("coach deleted");
+    },err=> 
+    {console.log("error found"+err);}
+    )
+  }
+  }
+  onEditCoach(url:string)
+  {
+    let arr:string[]=url.split("/")
+    let id=arr[arr.length-1];
+    //console.log("url="+url);
+     this.router.navigateByUrl("/editCoach/"+id);
   }
 
 }

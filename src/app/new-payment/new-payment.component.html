@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+<title>ajouter paiment</title>
+
+
+<meta charset="utf-8"/>
+
+ 
+ 
+
+
+
+
+	
+			<!-- /* $('#photo').change( function(event) {
+					var tmppath = URL.createObjectURL(event.target.files[0]);
+					$("photo").set(tmppath) */; -->
+				
+
+</head>
+<body>
+ 
+ 
+
+
+
+
+ <div class="container spacer">
+ 
+ 	
+ 	<br>
+ 	
+ 
+
+ <form #f="ngForm" (ngSubmit)="OnAddPayment(f.value)"> 
+ 	 	<label> Ajouter paiement :</label>
+ 	 	 
+ 	 	
+ 		 <div > Nom  </div>
+ 		<div class="form-group blu-margin">
+    <select  name ="nom"  ngModel>
+    <option *ngFor="let n of clientsNames" [value]="n" > {{n}}
+     </option>
+    
+    
+    <!-- <option value="">  </option> -->
+    </select>
+    </div>
+
+ 		  <div >   Montant </div>
+ 		  <div >   <input type="number" name="montant" ngModel> </div> 
+ 		  
+   <label>Start Date: </label>
+   <div > <input type="date" id="dateTime" name="date_debut"  ngModel> </div>
+        
+    <label>End Date: </label>
+   <div > <input type="date" id="dateTime" name="date_fin"  ngModel> </div>     
+
+       <br>  
+ 		 
+	   <button type="submit" class="btn btn-primary">add payment</button>
+	 
+ 	</form> 
+ 	
+</div>
+
+  
+
+</body>
+</html>

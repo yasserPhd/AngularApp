@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Athlete } from '../Athlete/Athlete';
 import { AthleteServService } from '../service/athlete-serv.service';
 
 @Component({
@@ -13,10 +15,11 @@ export class ClientsComponent implements OnInit {
   public currentpage:number=0;
   public totalpages:number=0;
   public pages:Array<number>=[];
-  
-  constructor(private atService:AthleteServService) {}
+  public path="/assets/images/";
+  constructor(private atService:AthleteServService, private router:Router) {}
 
   ngOnInit(): void {
+    this.OnGetClient();
   }
   OnGetClient()
   {
@@ -62,17 +65,23 @@ export class ClientsComponent implements OnInit {
     let conf=confirm("Are you sure to delete this athlete?")
     if (conf)
     {
-      //let url=a._links.self.href;
-     //;
+     let url=a._links.self.href;
      console.log("this is url "+a._links.self.href);
-    this.atService.deleteObject(a._links.self.href).
+    this.atService.deleteObject(url).
     subscribe(data=>{
       this.OnGetClient();
-      console.log("coach deleted");
+      console.log("athlete deleted");
     },err=> 
     {console.log("error found"+err);}
     )
   }
+  }
+  onEditAthlete(url:string)
+  {
+    let arr:string[]=url.split("/")
+    let id=arr[arr.length-1];
+    //console.log("url="+url);
+     this.router.navigateByUrl("/editClient/"+id);
   }
   
   
