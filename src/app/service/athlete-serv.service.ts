@@ -14,14 +14,22 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AthleteServService {
+  
   public url:string="http://localhost:8080";
   public urlApi:string="http://localhost:8080/api";
-  constructor(private httpClient:HttpClient,private loginService:LoginServService) { }
+  constructor(private httpClient:HttpClient,private loginService:LoginServService) {
+   }
+     getToken(){
+    return this.loginService.getToken()
+   }
   public getAthletes(page:number, size:number){
-    let token=this.loginService.getToken();
-    console.log("token found is"+token);
-    httpOptions.headers.set('Authorization', 'Bearer ' + token)
-    return this.httpClient.get(this.url+"/athletes?page="+page+"&size="+size,httpOptions) ;
+    let headers = new HttpHeaders({
+      'Authorization': this.getToken()
+    });
+    let options = { headers: headers };
+    console.log("token found is"+this.getToken());
+    //httpOptions.headers.set('Authorization',  'Bearer '+this.token)
+    return this.httpClient.get(this.url+"/athletes?page="+page+"&size="+size,{headers})
 
   }
   public getAthleteByKeword(page:number, size:number, mc:string){
