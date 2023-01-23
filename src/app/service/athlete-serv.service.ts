@@ -29,7 +29,7 @@ export class AthleteServService {
     let options = { headers: headers };
     console.log("token found is"+this.getToken());
     //httpOptions.headers.set('Authorization',  'Bearer '+this.token)
-    return this.httpClient.get(this.url+"/athletes?page="+page+"&size="+size,{headers})
+    return this.httpClient.get(this.url+"/athletes?page="+page+"&size="+size,options)
 
   }
   public getAthleteByKeword(page:number, size:number, mc:string){
