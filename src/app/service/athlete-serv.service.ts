@@ -2,6 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Athlete } from '../Athlete/Athlete';
 import { Coach } from '../Coach.model/Coach';
+import { HttpHeaders } from '@angular/common/http';
+import { LoginServService } from './login-serv.service';
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +16,19 @@ import { Coach } from '../Coach.model/Coach';
 export class AthleteServService {
   public url:string="http://localhost:8080";
   public urlApi:string="http://localhost:8080/api";
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient,private loginService:LoginServService) { }
   public getAthletes(page:number, size:number){
-    return this.httpClient.get(this.url+"/athletes?page="+page+"&size="+size) ;
+    let token=this.loginService.getToken();
+    console.log("token found is"+token);
+    httpOptions.headers.set('Authorization', 'Bearer ' + token)
+    return this.httpClient.get(this.url+"/athletes?page="+page+"&size="+size,httpOptions) ;
 
   }
   public getAthleteByKeword(page:number, size:number, mc:string){
+    let token=this.loginService.getToken();
+    httpOptions.headers.set('Authorization', 'Bearer ' + token)
     return this.httpClient.get(this.url+"/athletes/search/KeywordPage?mc="+mc+"&page="+page
-    +"&size="+size) ;
+    +"&size="+size,httpOptions) ;
     
 
   }

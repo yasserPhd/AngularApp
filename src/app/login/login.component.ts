@@ -24,21 +24,16 @@ export class LoginComponent implements OnInit {
   
   // this.service.login(this.username, this.password)
   this.service.authenticate(this.username, this.password)
-   .subscribe(data =>
-    {
-       this.message=data;
-       this.logged=true;
-       this.appcomponent.logged=true;
-       //console.log(LoginComponent.logged);
-      // sessionStorage.setItem('username', this.username)
-      // this.logged=this.isUserLoggedIn();
-       //console.log(this.logged);
-       this.router.navigateByUrl("/clients");
-    },err=>{
-        console.log(err);
-       this.logged=false;
-    });
- 
+  .subscribe( data  => {
+    console.log("data returned from login"+data);
+     // if(data=="Successfully logged in"){
+          this.logged=true;
+          this.appcomponent.logged=true;
+          this.router.navigateByUrl("/clients");
+     
+   },err=>{
+      this.logged=false;
+   });
   }
 
   logout() {
