@@ -42,11 +42,13 @@ export class LoginServService {
     //const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
     const body = { username: username, password: password };
     return this.http.post('http://localhost:8080/api/login', body,{...httpOptions, observe: 'response'}).pipe(
-      tap(res => console.log(res.headers.get('Authorization'))),
+      tap(res => console.log("header"+res.headers.get('Authorization'))),
   map((userData:any) => {
-    this.token= userData.body.split(":")[1];
-    console.log("token here"+userData.body.split(":")[1]);
+    //userData=JSON.parse(userData)
+    console.log("user data with token  :"+JSON.parse(userData.body).token)
+    this.token= JSON.parse(userData.body).token;
     sessionStorage.setItem('username',username);
+    sessionStorage.setItem('token', this.token);
     return userData;
   })
 );

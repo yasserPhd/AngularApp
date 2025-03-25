@@ -4,6 +4,9 @@ import { Athlete } from '../Athlete/Athlete';
 import { Coach } from '../Coach.model/Coach';
 import { HttpHeaders } from '@angular/common/http';
 import { LoginServService } from './login-serv.service';
+import { catchError } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
@@ -22,14 +25,25 @@ export class AthleteServService {
      getToken(){
     return this.loginService.getToken()
    }
-  public getAthletes(page:number, size:number){
-    let headers = new HttpHeaders({
-      'Authorization': this.getToken()
-    });
-    let options = { headers: headers };
-    console.log("token found is"+this.getToken());
-    //httpOptions.headers.set('Authorization',  'Bearer '+this.token)
-    return this.httpClient.get(this.url+"/athletes?page="+page+"&size="+size,options)
+   getAthletes(page:any, size:any): Observable<any> {
+    const token = sessionStorage.getItem('token');
+    console.log("found token is "+token)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      })
+    };
+    const url = this.urlApi+"/athletes";
+
+    return this.httpClient.get<any>(url, httpOptions)
+      .pipe(
+        catchError(error => {
+          console.error(error);
+          return throwError(error);
+        })
+      );
+    //return this.httpClient.get(this.url+"/athletes?page="+page+"&size="+size,options)
 
   }
   public getAthleteByKeword(page:number, size:number, mc:string){
